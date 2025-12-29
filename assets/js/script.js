@@ -117,4 +117,84 @@
             slides[currentSlide].style.display = 'flex';
         });
     });
+    // ====================================================
+    const resultsSwiper = new Swiper('.results .itemsToSlider', {
+        slidesPerView: 2,
+        spaceBetween: 14,
+        loop: true,
+        navigation: {
+            nextEl: '.results-next',
+            prevEl: '.results-prev',
+        },
+        breakpoints: {
+            320: {      // mobile
+                slidesPerView: 1
+            },
+            480: {      // mobile
+                slidesPerView: 2
+            },
+            700: {      // tablet
+                spaceBetween: 14,
+            },
+            1024: {     // desktop
+                spaceBetween: 17,
+            }
+        },
+        on: {
+            init: function () {
+                document.querySelector('.results .main-count-number').textContent =
+                    this.slides.length.toString().padStart(2, '0');
+            },
+            slideChange: function () {
+                document.querySelector('.results .main-number').textContent =
+                    (this.realIndex + 1).toString().padStart(2, '0');
+            }
+        }
+    });
+    // News Swiper - Tuzatilgan versiya
+    const newsSwiper = new Swiper('.news .block', {
+        slidesPerView: 3,
+        spaceBetween: 14,
+        loop:true,
+        navigation: {
+            nextEl: '.news .swiper-button-next-custom',
+            prevEl: '.news .swiper-button-prev-custom',
+        },
+        breakpoints: {
+            319: {
+                slidesPerView: 1,
+                spaceBetween: 10
+            },
+            769: {
+                slidesPerView: 2,
+                spaceBetween: 14
+            },
+            1025: {
+                slidesPerView: 3,
+                spaceBetween: 14
+            }
+        },
+       on: {
+    init: function () {
+        const total = String(this.slides.length).padStart(2, '0');
+
+        document.querySelectorAll('.news .end-number').forEach(el => {
+            el.textContent = total;
+        });
+
+        document.querySelectorAll('.news .main-number').forEach(el => {
+            el.textContent = '01';
+        });
+    },
+
+    slideChange: function () {
+        const current = String(this.realIndex + 1).padStart(2, '0');
+
+        document.querySelectorAll('.news .main-number').forEach(el => {
+            el.textContent = current;
+        });
+    }
+}
+
+    });
 })();
