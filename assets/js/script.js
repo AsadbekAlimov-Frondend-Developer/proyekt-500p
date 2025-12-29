@@ -100,7 +100,7 @@
     const slides = document.querySelectorAll('.item2-block2');
     let currentSlide = 0;
 
-    document.querySelectorAll('.next').forEach(btn => {
+    document.querySelectorAll('.hero .next').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             slides[currentSlide].style.display = 'none';
@@ -109,7 +109,7 @@
         });
     });
 
-    document.querySelectorAll('.prev').forEach(btn => {
+    document.querySelectorAll('.hero .prev').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             slides[currentSlide].style.display = 'none';
